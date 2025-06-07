@@ -56,22 +56,21 @@
       "can i have starfishes plsplspls 🌹🐚": [
         { text: "yes", next: "omg ilysm, three please? 💖" },
         { text: "no", next: "why nottt plsplspls 🥺" },
-        { text: "only option, include knife 🔪", next: "yes babe whatever you want 💋" }
       ],
       "omg ilysm, three please? 💖": [
         { text: "yes whatever you want babe 💞", next: null },
-        { text: "no three is too much 🙁", next: "what do you mean too much??? i want 3 plspls ill make you tea for life ☕💘" }
+        { text: "no three is too much :( ", next: "what do you mean too much??? i want 3 plspls ill make you tea for life ☕💘" }
       ],
       "what do you mean too much??? i want 3 plspls ill make you tea for life ☕💘": [
-        { text: "yes is only option, include knife 🔪", next: null }
+        { text: "yes is only option, 🔪", next: null }
       ],
       "why nottt plsplspls 🥺": [
         { text: "i dont want starfish 💔", next: "i’ll take care of all os us plsplpsls 🌊" }
       ],
       "i’ll take care of all os us plsplpsls 🌊": [
-        { text: "i dont want with you, you’re too short i dont want short starfishes 🙅‍♀️", next: "im 5'6 thats not short and shut up and give me starfishes 😤" }
+        { text: "i dont want with you, you’re too short i dont want short starfishes 🙅‍♀️", next: "im 5'6 thats not short!!! shut up and give me starfishes 😤" }
       ],
-      "im 5'6 thats not short and shut up and give me starfishes 😤": [
+      "im 5'6 thats not short!!! shut up and give me starfishes 😤": [
         { text: "yes babe whatever you want 💋", next: null }
       ]
     };
@@ -93,7 +92,7 @@
           if (option.next) render(option.next);
           else {
             questionEl.innerText = option.text;
-            optionsEl.innerHTML = '<div class="emoji">✨🌹🌊 thank you for loving starfishes 🌊🌹✨</div>';
+            optionsEl.innerHTML = '<div class="emoji">✨🌹🌊 thank you for saying yes, when tho??  🌊🌹✨</div>';
           }
         };
         optionsEl.appendChild(button);
