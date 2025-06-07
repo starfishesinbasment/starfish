@@ -6,68 +6,101 @@
   <title>Can I Have Starfishes?</title>
   <style>
     body {
-      background: linear-gradient(to bottom right, #ffeef2, #e0f7f4);
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      color: #4b2e2e;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #ffe6f0, #fff5fa);
+      color: #d63384;
       text-align: center;
-      padding: 2rem;
+      padding: 50px;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    .option-button {
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 20px;
       background-color: #fff0f5;
-      border: 2px solid #ff8fab;
-      border-radius: 12px;
-      padding: 1rem 2rem;
-      margin: 1rem;
-      font-size: 1.2rem;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.6);
+    }
+    .question {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    .options button {
+      background-color: #ffc0cb;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1em;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.2s ease-in-out;
     }
-    .option-button:hover {
-      background-color: #ffe5ec;
+    .options button:hover {
+      background-color: #ff99b6;
+      transform: scale(1.05);
     }
-    #response {
-      margin-top: 2rem;
-      font-size: 1.3rem;
-      color: #a83264;
-    }
-    img {
-      max-width: 100px;
-      margin: 1rem;
+    .emoji {
+      font-size: 1.2em;
     }
   </style>
 </head>
 <body>
-  <h1>🌹 Can I have starfishes plsplspls? 🐚</h1>
-  <div id="options">
-    <button class="option-button" onclick="showResponse('yes')">Yes 💖</button>
-    <button class="option-button" onclick="showResponse('no')">No 🗡️</button>
+  <div class="container">
+    <div id="form">
+      <div class="question" id="question">can i have starfishes plsplspls 🌹🐚</div>
+      <div class="options" id="options"></div>
+    </div>
   </div>
-  <div id="response"></div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Red_rose_01.jpg/320px-Red_rose_01.jpg" alt="Red rose">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Starfish_2007-1.jpg/320px-Starfish_2007-1.jpg" alt="Starfish">
 
   <script>
-    function showResponse(choice) {
-      const responseDiv = document.getElementById("response");
-      if (choice === "yes") {
-        responseDiv.innerHTML = `Omg ILYSM, three please? 💋<br>
-          → Yes whatever you want babe 💘<br>
-          → No three is too much 😢<br>
-          → What do you mean too much??? I want 3 plspls I’ll make you tea for life 🥺☕<br>
-          → Yes is only option. Include knife 🗡️❤️`;
-      } else {
-        responseDiv.innerHTML = `Why nottt plsplspls 😭<br>
-          → I don’t want starfishes 😤<br>
-          → I’ll take care of all of us plsplpsls 🥺🌊<br>
-          → I don’t want with you, you’re too short 😒<br>
-          → I’m 5'6", that’s not short!! 😭 Shut up and give me starfishes!! 🔪<br>
-          → Yes babe, whatever you want 💘`;
-      }
+    const tree = {
+      "can i have starfishes plsplspls 🌹🐚": [
+        { text: "yes", next: "omg ilysm, three please? 💖" },
+        { text: "no", next: "why nottt plsplspls 🥺" },
+        { text: "only option, include knife 🔪", next: "yes babe whatever you want 💋" }
+      ],
+      "omg ilysm, three please? 💖": [
+        { text: "yes whatever you want babe 💞", next: null },
+        { text: "no three is too much 🙁", next: "what do you mean too much??? i want 3 plspls ill make you tea for life ☕💘" }
+      ],
+      "what do you mean too much??? i want 3 plspls ill make you tea for life ☕💘": [
+        { text: "yes is only option, include knife 🔪", next: null }
+      ],
+      "why nottt plsplspls 🥺": [
+        { text: "i dont want starfish 💔", next: "i’ll take care of all os us plsplpsls 🌊" }
+      ],
+      "i’ll take care of all os us plsplpsls 🌊": [
+        { text: "i dont want with you, you’re too short i dont want short starfishes 🙅‍♀️", next: "im 5'6 thats not short and shut up and give me starfishes 😤" }
+      ],
+      "im 5'6 thats not short and shut up and give me starfishes 😤": [
+        { text: "yes babe whatever you want 💋", next: null }
+      ]
+    };
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+
+    function render(question) {
+      questionEl.innerText = question;
+      optionsEl.innerHTML = '';
+
+      const options = tree[question];
+      if (!options) return;
+
+      options.forEach(option => {
+        const button = document.createElement('button');
+        button.innerText = option.text;
+        button.onclick = () => {
+          if (option.next) render(option.next);
+          else {
+            questionEl.innerText = option.text;
+            optionsEl.innerHTML = '<div class="emoji">✨🌹🌊 thank you for loving starfishes 🌊🌹✨</div>';
+          }
+        };
+        optionsEl.appendChild(button);
+      });
     }
+
+    render("can i have starfishes plsplspls 🌹🐚");
   </script>
 </body>
 </html>
