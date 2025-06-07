@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Can I Have Starfishes?</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffeef2, #e0f7f4);
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      color: #4b2e2e;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .option-button {
+      background-color: #fff0f5;
+      border: 2px solid #ff8fab;
+      border-radius: 12px;
+      padding: 1rem 2rem;
+      margin: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .option-button:hover {
+      background-color: #ffe5ec;
+    }
+    #response {
+      margin-top: 2rem;
+      font-size: 1.3rem;
+      color: #a83264;
+    }
+    img {
+      max-width: 100px;
+      margin: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌹 Can I have starfishes plsplspls? 🐚</h1>
+  <div id="options">
+    <button class="option-button" onclick="showResponse('yes')">Yes 💖</button>
+    <button class="option-button" onclick="showResponse('no')">No 🗡️</button>
+  </div>
+  <div id="response"></div>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Red_rose_01.jpg/320px-Red_rose_01.jpg" alt="Red rose">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Starfish_2007-1.jpg/320px-Starfish_2007-1.jpg" alt="Starfish">
+
+  <script>
+    function showResponse(choice) {
+      const responseDiv = document.getElementById("response");
+      if (choice === "yes") {
+        responseDiv.innerHTML = `Omg ILYSM, three please? 💋<br>
+          → Yes whatever you want babe 💘<br>
+          → No three is too much 😢<br>
+          → What do you mean too much??? I want 3 plspls I’ll make you tea for life 🥺☕<br>
+          → Yes is only option. Include knife 🗡️❤️`;
+      } else {
+        responseDiv.innerHTML = `Why nottt plsplspls 😭<br>
+          → I don’t want starfishes 😤<br>
+          → I’ll take care of all of us plsplpsls 🥺🌊<br>
+          → I don’t want with you, you’re too short 😒<br>
+          → I’m 5'6", that’s not short!! 😭 Shut up and give me starfishes!! 🔪<br>
+          → Yes babe, whatever you want 💘`;
+      }
+    }
+  </script>
+</body>
+</html>
